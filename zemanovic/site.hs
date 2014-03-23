@@ -18,13 +18,9 @@ main = hakyll $ do
     	route idRoute
 	compile copyFileCompiler
 
-    match "js/vendor/*" $ do
-    	route idRoute
-	compile copyFileCompiler
-
 --    match "etc/*" $ do
---        route $ constRoute ""
---	compile copyFileCompiler
+--       route $ constRoute ""
+--       compile copyFileCompiler
 
     match (fromList ["about.rst", "contact.markdown"]) $ do
         route   $ setExtension "html"
