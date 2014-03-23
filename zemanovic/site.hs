@@ -3,7 +3,6 @@
 import           Data.Monoid (mappend)
 import           Hakyll
 
-
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
@@ -14,6 +13,18 @@ main = hakyll $ do
     match "css/*" $ do
         route   idRoute
         compile compressCssCompiler
+ 
+    match "js/*" $ do
+    	route idRoute
+	compile copyFileCompiler
+
+    match "js/vendor/*" $ do
+    	route idRoute
+	compile copyFileCompiler
+
+--    match "etc/*" $ do
+--        route $ constRoute ""
+--	compile copyFileCompiler
 
     match (fromList ["about.rst", "contact.markdown"]) $ do
         route   $ setExtension "html"
