@@ -1,2 +1,7 @@
 .cabal-sandbox/
 zemanovic/_cache/
+zemanovic/_site/
+
+*.exe
+*.o
+*.hi
