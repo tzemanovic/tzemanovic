@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
-import           Data.Monoid (mappend)
-import           Hakyll
+import Data.Monoid (mappend)
+import Hakyll
 
 --------------------------------------------------------------------------------
 main :: IO ()
@@ -10,17 +10,22 @@ main = hakyll $ do
         route   idRoute
         compile copyFileCompiler
 
-    match "css/*" $ do
-        route   idRoute
-        compile compressCssCompiler
- 
-    match "js/*" $ do
-    	route idRoute
-	compile copyFileCompiler
+    match "css/*" $ compile getResourceBody
 
---    match "etc/*" $ do
---       route $ constRoute ""
---       compile copyFileCompiler
+    create ["master.css"] $ do
+        route   idRoute
+        compile $ do
+            items <- loadAll "css/*"
+            makeItem $ concatMap itemBody (items :: [Item String])
+                >>= compressCss . return
+
+    match "js/*" $ do
+        route idRoute
+        compile copyFileCompiler
+
+    --    match "etc/*" $ do
+    --       route $ constRoute ""
+    --       compile copyFileCompiler
 
     match (fromList ["about.rst", "contact.markdown"]) $ do
         route   $ setExtension "html"
