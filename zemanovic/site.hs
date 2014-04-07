@@ -6,7 +6,7 @@ import Hakyll
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
-    match "images/*" $ do
+    match ("favicon.ico" .||. "robots.txt" .||. "images/*") $ do
         route   idRoute
         compile copyFileCompiler
 
@@ -22,10 +22,6 @@ main = hakyll $ do
     match "js/*" $ do
         route idRoute
         compile copyFileCompiler
-
-    --    match "etc/*" $ do
-    --       route $ constRoute ""
-    --       compile copyFileCompiler
 
     match (fromList ["about.rst", "contact.markdown"]) $ do
         route   $ setExtension "html"
@@ -63,10 +59,21 @@ main = hakyll $ do
                     listField "posts" postCtx (return posts) `mappend`
                     constField "title" "Home"                `mappend`
                     defaultContext
-
             getResourceBody
                 >>= applyAsTemplate indexCtx
                 >>= loadAndApplyTemplate "templates/default.html" indexCtx
+                >>= relativizeUrls
+
+    match "blog.html" $ do
+        route idRoute
+        compile $ do
+            posts <- recentFirst =<< loadAll "posts/*"
+            let blogCtx =
+                    listField "posts" postCtx (return posts) `mappend`
+                    defaultContext
+            getResourceBody
+                >>= applyAsTemplate blogCtx
+                >>= loadAndApplyTemplate "templates/default.html" blogCtx
                 >>= relativizeUrls
 
     match "templates/*" $ compile templateCompiler
