@@ -3,7 +3,7 @@ zemanovic-com
 
 ## building
 
-`ghc --make site.hs`
+`ghc --make -threaded site.hs`
 
 `./site rebuild`
 

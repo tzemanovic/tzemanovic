@@ -1,3 +1,10 @@
+/* IE10 win8 shiv */
+@-webkit-viewport   { width: device-width; }
+@-moz-viewport      { width: device-width; }
+@-ms-viewport       { width: device-width; }
+@-o-viewport        { width: device-width; }
+@viewport           { width: device-width; }
+
 html, body {
     min-height: 100%;
     background-color: #0c3246;
@@ -7,12 +14,13 @@ html, body {
     -o-background-size: cover;
     background-size: cover;
 }
+body {
+  padding-top: 70px;
+  padding-bottom: 30px;
+}
 #footer {
     width: 100%;
     height: 60px;
-}
-body > .container {
-    padding: 60px 15px 0;
 }
 #footer > .text-muted {
     margin: 20px 0;

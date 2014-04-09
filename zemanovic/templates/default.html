@@ -5,11 +5,13 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Tomas Zemanovic">
+<link rel="shortcut icon" href="favicon.ico">
 
-<title>Tomas Zemanovic - $title$</title>
+<title>Tomáš Zemanovič - $title$</title>
 
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="/master.css">
+<link rel="stylesheet" href="/style.css">
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -18,12 +20,12 @@
 <![endif]-->
 
 </head>
-<body>
+<body role="document">
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
 		<div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">navigation</span>
+                <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -41,20 +43,28 @@
 </div>
 
 <div class="container" role="main">
-    <div>
-        $body$
-    </div>
+    $body$
 
     <div id="footer">
         <p class="text-muted">made with <a href="http://jaspervdj.be/hakyll/" target="_blank">Hakyll</a></p>
     </div>
 </div>
 
-<script src="/js/jquery-1.11.0.min.js"></script>
+<!--script src="/js/jquery-1.11.0.min.js"></script-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <!--script src="/js/bootstrap.min.js"></script-->
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>
+if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+      var msViewportStyle = document.createElement('style')
+            msViewportStyle.appendChild(
+                        document.createTextNode(
+                                  '@-ms-viewport{width:auto!important}'
+                                      )
+                          )
+              document.querySelector('head').appendChild(msViewportStyle)
+}
 (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
 							function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
  e=o.createElement(i);r=o.getElementsByTagName(i)[0];
