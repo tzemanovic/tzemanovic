@@ -6,18 +6,18 @@ import Hakyll
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
-    match ("favicon.ico" .||. "robots.txt" .||. "images/*") $ do
+    match ("favicon.ico" .||. "robots.txt" .||. "images/*" .||. "css/style.min.css") $ do
         route   idRoute
         compile copyFileCompiler
 
-    match "css/*" $ compile getResourceBody
+    {-match "css/*" $ compile getResourceBody
 
     create ["style.css"] $ do
         route   idRoute
         compile $ do
             items <- loadAll "css/*"
             makeItem $ concatMap itemBody (items :: [Item String])
-                >>= compressCss . return
+                >>= compressCss . return-}
 
     match "js/*" $ do
         route idRoute
@@ -57,6 +57,7 @@ main = hakyll $ do
             posts <- recentFirst =<< loadAll "posts/*"
             let indexCtx =
                     listField "posts" postCtx (return posts) `mappend`
+                    constField "active-home" "y"             `mappend`
                     constField "title" "home"                `mappend`
                     defaultContext
             getResourceBody
@@ -70,6 +71,7 @@ main = hakyll $ do
             posts <- recentFirst =<< loadAll "posts/*"
             let blogCtx =
                     listField "posts" postCtx (return posts) `mappend`
+                    constField "active-blog" "y"             `mappend`
                     defaultContext
             getResourceBody
                 >>= applyAsTemplate blogCtx
@@ -83,4 +85,5 @@ main = hakyll $ do
 postCtx :: Context String
 postCtx =
     dateField "date" "%B %e, %Y" `mappend`
+    constField "active-blog" "y" `mappend`
     defaultContext

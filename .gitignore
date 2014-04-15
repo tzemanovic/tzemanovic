@@ -1,7 +1,11 @@
 .cabal-sandbox/
 zemanovic/_cache/
 zemanovic/_site/
-zemanovic/assets/
+assets/
+less/node_modules/
+less/dist/
+
+less/npm-debug.log
 
 *.exe
 *.o
