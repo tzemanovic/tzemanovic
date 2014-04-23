@@ -1,6 +1,7 @@
 .cabal-sandbox/
 zemanovic/_cache/
 zemanovic/_site/
+zemanovic/_publish/
 assets/
 less/node_modules/
 less/dist/
