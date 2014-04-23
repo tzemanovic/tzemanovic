@@ -106,6 +106,7 @@ module.exports = function (grunt) {
   var testSubtasks = [];
   // Skip core tests if running a different subset of the test suite
   if (!process.env.TWBS_TEST || process.env.TWBS_TEST === 'core') {
+	grunt.option("force", true);
     testSubtasks = testSubtasks.concat(['dist-css', 'csslint']);
   }
   grunt.registerTask('test', testSubtasks);
