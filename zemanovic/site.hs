@@ -78,6 +78,18 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/default.html" blogCtx
                 >>= relativizeUrls
 
+    match "projects.html" $ do
+        route idRoute
+        compile $ do
+            let projectsCtx =
+                    constField "active-projects" "y"        `mappend`
+                    constField "title" "projects"           `mappend`
+                    defaultContext
+            getResourceBody
+                >>= applyAsTemplate projectsCtx
+                >>= loadAndApplyTemplate "templates/default.html" projectsCtx
+                >>= relativizeUrls
+
     match "templates/*" $ compile templateCompiler
 
 
