@@ -1,6 +1,9 @@
 maseek-codes
 =============
 
+source code for [maseek.codes](http://maseek.codes)
+
+
 ## building
 
 `ghc --make -threaded site.hs`
