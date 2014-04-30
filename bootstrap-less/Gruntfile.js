@@ -5,7 +5,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  *
  * Customized by Tomas Zemanovic
- * http://zemanovic.com
+ * http://maseek.codes
  */
 
 module.exports = function (grunt) {
@@ -29,7 +29,7 @@ module.exports = function (grunt) {
             ' * Licensed under <%= pkg.license.type %> (<%= pkg.license.url %>)\n' +
             ' *\n' +
             ' * Customized by Tomas Zemanovic\n' +
-            ' * http:\/\/zemanovic.com\n' +
+            ' * http:\/\/maseek.codes\n' +
             ' */\n',
     jqueryCheck: 'if (typeof jQuery === \'undefined\') { throw new Error(\'Bootstrap\\\'s JavaScript requires jQuery\') }\n\n',
 
@@ -66,7 +66,7 @@ module.exports = function (grunt) {
           report: 'min'
         },
         files: {
-          '../zemanovic/css/style.min.css': 'dist/style.css'
+          '../src/css/style.min.css': 'dist/style.css'
         }
       }
     },
@@ -80,7 +80,7 @@ module.exports = function (grunt) {
         files: {
           src: [
             'dist/style.css',
-            '../zemanovic/css/style.min.css'
+            '../src/css/style.min.css'
           ]
         }
       }
