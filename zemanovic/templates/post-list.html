@@ -1,7 +1,17 @@
-<ul>
+<div class="posts">
     $for(posts)$
-        <li>
-            <a href="$url$">$title$</a> - $date$
-        </li>
+    <a href="$url$"><h2>$title$</h2></a><br/>
+    <i class="fa fa-calendar"></i> $date$ <i class="fa fa-comment-o primary-color"></i> <a href="$url$#disqus_thread">Comments</a><br>
     $endfor$
-</ul>
+</div>
+
+<script type="text/javascript">
+var disqus_shortname = 'maseek'; 
+
+(function () {
+ var s = document.createElement('script'); s.async = true;
+ s.type = 'text/javascript';
+ s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+ (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+ }());
+</script>
