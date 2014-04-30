@@ -3,10 +3,10 @@ zemanovic/_cache/
 zemanovic/_site/
 zemanovic/_publish/
 assets/
-less/node_modules/
-less/dist/
+bootstrap-less/node_modules/
+bootstrap-less/dist/
 
-less/npm-debug.log
+bootstrap-less/npm-debug.log
 
 *.exe
 *.o

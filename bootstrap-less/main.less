@@ -1,0 +1,122 @@
+@import "bootstrap-less-3.1.1/bootstrap.less";
+@import "variables.less";
+@import "social.less";
+@import "projects.less";
+
+/* page header */
+.navigation {
+	.navbar;
+	.navbar-default;
+	.navbar-fixed-top;
+}
+
+/* IE10 win8 shiv */
+@-webkit-viewport   { width: device-width; }
+@-moz-viewport      { width: device-width; }
+@-ms-viewport       { width: device-width; }
+@-o-viewport        { width: device-width; }
+@viewport           { width: device-width; }
+
+html, body {
+    min-height: 100%;
+    background-color: #0c3246;
+    background: url(../images/bg.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+body {
+  padding-top: 70px;
+  padding-bottom: 30px;
+}
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 1px 1px 0px @gray-dark;
+	color: @brand-primary;
+}
+.footer {
+    margin: 40px 0 20px 0;
+    width: 100%;
+    height: 60px;
+	text-align: center;
+	font-size: @font-size-small;
+}
+.footer > p {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.footer .symbol {
+	line-height: 20px;
+	font-size: 20px;
+}
+@media (min-width: @screen-sm-min) { 
+	.social-links, .about {
+		text-align: center;
+	}
+}
+@media (min-width: @screen-md-min) { 
+	.social-links {
+		float: left;
+	}
+	.about {
+		float: right;
+		text-align: right;
+	}
+}
+
+.zoom {
+    -webkit-transform: scale(1,1);
+    -webkit-transition-timing-function: ease-out;
+    -webkit-transition-duration: 500ms;
+    -moz-transform: scale(1,1);
+    -moz-transition-timing-function: ease-out;
+    -moz-transition-duration: 500ms;
+    -ms-transform: scale(1,1);
+    -ms-transition-timing-function: ease-out;
+    -ms-transition-duration: 500ms;
+    -o-transform: scale(1,1);
+    -o-transition-timing-function: ease-out;
+    -o-transition-duration: 500ms;
+    transform: scale(1,1);
+    transition-timing-function: ease-out;
+    transition-duration: 500ms;
+}
+.zoom:hover {
+	text-decoration: none;
+    -webkit-transform: scale(1.5,1.5);
+    -webkit-transition-timing-function: ease-out;
+    -webkit-transition-duration: 250ms;
+    -moz-transform: scale(1.5,1.5);
+    -moz-transition-timing-function: ease-out;
+    -moz-transition-duration: 250ms;
+    -ms-transform: scale(1.5,1.5);
+    -ms-transition-timing-function: ease-out;
+    -ms-transition-duration: 250ms;
+    -o-transform: scale(1.5,1.5);
+    -o-transition-timing-function: ease-out;
+    -o-transition-duration: 250ms;
+    transform: scale(1.5,1.5);
+    transition-timing-function: ease-out;
+    transition-duration: 250ms;
+}
+
+.navbar-brand {
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.primary-color {
+	color: @brand-primary;
+}
+.posts h2 {
+	margin-bottom: -20px;
+}
+.post-link:hover {
+	text-decoration: none;
+}
+.post-link:hover h2 {
+	color: @link-hover-color;
+}
+.info {
+	margin-bottom: 20px;
+}
