@@ -23,7 +23,7 @@ git commit -m msg
 git push origin master
 
 cd ../..
-git add -all .
+git add --all .
 git add -u :/
 git commit -m msg
 git push origin master
