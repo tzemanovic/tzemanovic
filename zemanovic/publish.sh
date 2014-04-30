@@ -17,7 +17,7 @@ git add --all .
 git add -u :/
 echo -n "enter commit message: "
 read msg
-git commit -m msg
+git commit -m "$msg"
 # use this first if on cygwin
 # git config --global core.askpass "git-gui--askpass"
 git push origin master
@@ -25,5 +25,5 @@ git push origin master
 cd ../..
 git add --all .
 git add -u :/
-git commit -m msg
+git commit -m "$msg"
 git push origin master
