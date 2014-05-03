@@ -2,6 +2,7 @@
 @import "variables.less";
 @import "social.less";
 @import "projects.less";
+@import (inline) "highlightjs/solarized_dark.css";
 
 /* page header */
 .navigation {
@@ -125,4 +126,11 @@ a.red {
 }
 a.red:hover {
 	color: @brand-navbar;
+}
+
+pre {
+	padding: 2px;
+}
+.post-body img {
+	.img-rounded;
 }

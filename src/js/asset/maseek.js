@@ -18,3 +18,5 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 ga('create', 'UA-26881307-2', 'maseek.codes');
 ga('send', 'pageview');
+
+hljs.initHighlightingOnLoad();
