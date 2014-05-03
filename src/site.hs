@@ -46,7 +46,7 @@ main = hakyll $ do
                 >>= relativizeUrls
 
 
-    match "index.html" $ do
+    {-match "index.html" $ do
         route idRoute
         compile $ do
             posts <- recentFirst =<< loadAll "posts/*"
@@ -59,10 +59,10 @@ main = hakyll $ do
                 >>= applyAsTemplate indexCtx
                 >>= loadAndApplyTemplate "templates/default.html" indexCtx
                 >>= relativizeUrls
-                >>= removeIndexHtml
+                >>= removeIndexHtml-}
 
-    match "blog.html" $ do
-        route niceRoute
+    match "index.html" $ do
+        route idRoute
         compile $ do
             posts <- recentFirst =<< loadAll "posts/*"
             let blogCtx =
