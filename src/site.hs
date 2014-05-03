@@ -15,7 +15,7 @@ main = do
     setFileSystemEncoding utf8
     setForeignEncoding utf8
     hakyllWith config $ do
-        match ("favicon.ico" .||. "robots.txt" .||. "images/**" .||. "css/**" .||. "posts/*/*") $ do
+        match ("favicon.ico" .||. "robots.txt" .||. "images/**" .||. "css/**" .||. "posts/**.png" .||. "posts/**.jpg") $ do
             route   idRoute
             compile copyFileCompiler
 
@@ -94,6 +94,15 @@ main = do
                     >>= relativizeUrls
                     >>= removeIndexHtml
 
+        match "404.html" $ do
+            route idRoute
+            compile $ do
+                getResourceBody
+                    >>= applyAsTemplate defaultContext
+                    >>= loadAndApplyTemplate "templates/default.html" defaultContext
+                    >>= relativizeUrls
+                    >>= removeIndexHtml
+
         match "templates/*" $ compile templateCompiler
 
 --------------------------------------------------------------------------------
@@ -129,7 +138,6 @@ removeIndexHtml item = return $ fmap (withUrls removeIndexStr) item
             (dir, "index.html") | isLocal dir -> dir
             _                                 -> url
             where isLocal uri = not (isInfixOf "://" uri)
-
 
 --------------------------------------------------------------------------------
 config :: Configuration
