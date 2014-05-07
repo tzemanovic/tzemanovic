@@ -3,9 +3,12 @@
 {-# LANGUAGE OverloadedStrings #-}
 import Data.Monoid ((<>))
 import System.FilePath.Posix (takeBaseName,takeDirectory,(</>),splitFileName)
-import Data.List (isInfixOf, isPrefixOf, isSuffixOf)
+import Data.List (sortBy, isInfixOf, isPrefixOf, isSuffixOf)
+import Data.Ord (comparing)
 import System.FilePath (takeFileName)
 import GHC.IO.Encoding(setLocaleEncoding, setFileSystemEncoding, setForeignEncoding, utf8)
+import Control.Monad (forM)
+import System.Locale (defaultTimeLocale)
 import Hakyll
 
 --------------------------------------------------------------------------------
@@ -32,11 +35,19 @@ main = do
         match "posts/*" $ do
             route $ niceRoute
             compile $ pandocCompiler
+                >>= saveSnapshot "post"
                 >>= loadAndApplyTemplate "templates/post.html"    postCtx
                 >>= loadAndApplyTemplate "templates/default.html" postCtx
                 >>= relativizeUrls
                 >>= removeIndexHtml
 
+        create ["feed.xml"] $ do
+            route idRoute
+            compile $ do
+                loadAllSnapshots "posts/*" "post"
+                >>= (fmap (take 10)) . createdFirst
+                >>= renderAtom feedConfiguration feedCtx
+                
         create ["archive.html"] $ do
             route idRoute
             compile $ do
@@ -122,6 +133,20 @@ metaKeywordCtx = field "metaKeywords" $ \item -> do
             showMetaTags t = "<meta name=\"keywords\" content=\"" ++ t ++ "\"/>\n"
 
 --------------------------------------------------------------------------------
+feedCtx :: Context String
+feedCtx = defaultContext <> bodyField "description" 
+
+--------------------------------------------------------------------------------
+feedConfiguration :: FeedConfiguration
+feedConfiguration = FeedConfiguration
+    { feedTitle = "maseek.codes blog"
+    , feedDescription = "blog about c++, haskell and other stuff"
+    , feedAuthorName = "Tomas Zemanovic"
+    , feedAuthorEmail = "tzemanovic@gmail.com"
+    , feedRoot = "http://maseek.codes"
+    }
+
+--------------------------------------------------------------------------------
 niceRoute :: Routes
 niceRoute = customRoute createIndexRoute
     where
@@ -152,3 +177,11 @@ config = defaultConfiguration {ignoreFile = ignoreFile'}
             | otherwise                    = False
             where
                 fileName = takeFileName path
+
+--------------------------------------------------------------------------------
+createdFirst :: [Item String] -> Compiler [Item String]
+createdFirst items = do
+    itemsWithTime <- forM items $ \item -> do
+        utc <- getItemUTC defaultTimeLocale $ itemIdentifier item
+        return (utc,item)
+    return $ map snd $ reverse $ sortBy (comparing fst) itemsWithTime
