@@ -20,3 +20,7 @@ ga('create', 'UA-26881307-2', 'maseek.codes');
 ga('send', 'pageview');
 
 hljs.initHighlightingOnLoad();
+
+$('.projects').isotope({
+  itemSelector: '.project'
+});

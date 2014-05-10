@@ -18,7 +18,7 @@ main = do
     setFileSystemEncoding utf8
     setForeignEncoding utf8
     hakyllWith config $ do
-        match ("favicon.ico" .||. "robots.txt" .||. "images/**" .||. "css/**" .||. "posts/**.png" .||. "posts/**.jpg") $ do
+        match ("favicon.ico" .||. "robots.txt" .||. "images/**" .||. "css/**" .||. "posts/**.png" .||. "posts/**.jpg" .||. "quarter-brain/**") $ do
             route   idRoute
             compile copyFileCompiler
 
