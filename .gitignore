@@ -11,3 +11,4 @@ bootstrap-less/npm-debug.log
 *.exe
 *.o
 *.hi
+*.swp
