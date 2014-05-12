@@ -34,8 +34,10 @@ main = do
 
         match "posts/*" $ do
             route $ niceRoute
-            compile $ pandocCompiler
+            compile $ getResourceBody
+                >>= withItemBody (unixFilter "node" ["..\\highlight.js-cli\\bin\\hljs"])    
                 >>= saveSnapshot "post"
+                >>= pandocCompile
                 >>= loadAndApplyTemplate "templates/post.html"    postCtx
                 >>= loadAndApplyTemplate "templates/default.html" postCtx
                 >>= relativizeUrls
@@ -185,3 +187,7 @@ createdFirst items = do
         utc <- getItemUTC defaultTimeLocale $ itemIdentifier item
         return (utc,item)
     return $ map snd $ reverse $ sortBy (comparing fst) itemsWithTime
+
+--------------------------------------------------------------------------------
+pandocCompile :: Item String -> Compiler (Item String)
+pandocCompile item = return $ writePandoc $ readPandoc item
