@@ -8,11 +8,11 @@ For a while I have been trying to emulate the *nix terminal in Windows 8 using c
 
 First of all you need to disable Hyper-V to be able to install VMware Player. To do that run the following command from an elevated command prompt:
 
-<pre><code>dism.exe /Online /Disable-Feature:Microsoft-Hyper-V</code></pre>
+<pre><code class="bash">dism.exe /Online /Disable-Feature:Microsoft-Hyper-V</code></pre>
 
 In case you need to enable Hyper-V again, the following undoes the changes:
 
-<pre><code>dism.exe /Online /Enable-Feature:Microsoft-Hyper-V /All</code></pre>
+<pre><code class="bash">dism.exe /Online /Enable-Feature:Microsoft-Hyper-V /All</code></pre>
 
 Next, install and run <a href="https://my.vmware.com/web/vmware/free" target="_blank">VMware Player</a>.
 
@@ -54,28 +54,28 @@ My screen resolution (1920x1080) was not listed in the display settings, here's 
 
 1. Calculate VESA CVT mode lines:
 
-	<pre><code>cvt 1920 1080</code></pre>
+	<pre><code class="bash">cvt 1920 1080</code></pre>
 
 1. Copy the output starting from after Modeline, and prepend it with <code>xrandr --newmode</code>, e.g.:
 
-	<pre><code>xrandr --newmode "1920x1080_60.00" 173.00 1920 2048 2248 2576 1080 1083 1088 1120 -hsync +vsync</code></pre>
+	<pre><code class="bash">xrandr --newmode "1920x1080_60.00" 173.00 1920 2048 2248 2576 1080 1083 1088 1120 -hsync +vsync</code></pre>
 	
 1. and then: 
 
-	<pre><code>xrandr --addmode Virtual1 "1920x1080_60.00"</code></pre>
+	<pre><code class="bash">xrandr --addmode Virtual1 "1920x1080_60.00"</code></pre>
 
 1. Switch to console mode using <kbd>Alt</kbd>+<kbd>Ctrl</kbd>+<kbd>F1</kbd> and log in.
 
 1. Stop Display Manager:
 
-	<pre><code>sudo service mdm stop</code></pre>
+	<pre><code class="bash">sudo service mdm stop</code></pre>
 
 1. create X configuration file:
 
-	<pre><code>sudo X -configure</code></pre>
+	<pre><code class="bash">sudo X -configure</code></pre>
 
 1. and start it again:
 
-	<pre><code>sudo service mdm start</code></pre>
+	<pre><code class="bash">sudo service mdm start</code></pre>
 
 1. Switch to back to the desktop mode using <kbd>Alt</kbd>+<kbd>Ctrl</kbd>+<kbd>F7</kbd>.

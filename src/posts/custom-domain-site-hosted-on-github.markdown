@@ -12,7 +12,7 @@ To redirect the github page to your custom domain create a **CNAME** file in the
 
 It is handy to create a *one-click* publish shell script. Here is mine:
 
-<pre><code>#!/bin/bash
+<pre><code class="bash">#!/bin/bash
 
 # Create _publish directory if it doesn't exits
 mkdir -p _publish
