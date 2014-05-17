@@ -1,0 +1,46 @@
+// solarized dark colors
+@sol-bg:		#002b36;
+@sol-color:		#839496;
+@sol-comment:	#586e75;
+@sol-green:		#859900;
+@sol-cyan:		#2aa198;
+@sol-blue:		#268bd2;
+@sol-yellow:	#b58900;
+@sol-orange:	#cb4b16;
+@sol-red:		#dc322f;
+@sol-violet:	#6c71c4;
+
+pre { 
+	background-color: @sol-bg; color: @sol-color; 
+}
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode, table.sourceCode pre { 
+	margin: 0; padding: 0; border: 0; vertical-align: baseline; border: none; 
+}
+td.lineNumbers { 
+	border-right: 1px solid #AAAAAA; text-align: right; color: #AAAAAA; padding-right: 5px; padding-left: 5px; 
+}
+td.sourceCode { padding-left: 5px; }
+// keyword
+.sourceCode .kw { color: @sol-blue; }
+// data type
+.sourceCode .dt { color: @sol-yellow; }
+// numbers
+.sourceCode .dv { color: @sol-cyan; }
+.sourceCode .bn { color: @sol-cyan; }
+.sourceCode .fl { color: @sol-cyan; }
+// char
+.sourceCode .ch { color: @sol-cyan; }
+// string
+.sourceCode .st { color: @sol-cyan; }
+// comment
+.sourceCode .co { color: @sol-comment; font-style: italic; }
+// other
+.sourceCode .ot { color: @sol-green; }
+// alert
+.sourceCode .al { color: @sol-orange; font-weight: bold; }
+// function
+.sourceCode .fu { color: @sol-blue; }
+// region
+.sourceCode .re { }
+// error
+.sourceCode .er { color: @sol-red; font-weight: bold; }

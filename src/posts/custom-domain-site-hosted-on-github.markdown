@@ -43,7 +43,8 @@ mv .README.md README.md
 cp -rf ../../_site/* .
 
 # Add all files to git
-git add -A
+git add --all :/
+git add -u :/
 
 echo -n "enter commit message: "
 read msg
