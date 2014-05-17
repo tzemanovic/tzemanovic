@@ -34,10 +34,8 @@ main = do
 
         match "posts/*" $ do
             route $ niceRoute
-            compile $ getResourceBody
-                >>= withItemBody (unixFilter "node" ["..\\highlight.js-cli\\bin\\hljs"])    
+            compile $ pandocCompiler
                 >>= saveSnapshot "post"
-                >>= pandocCompile
                 >>= loadAndApplyTemplate "templates/post.html"    postCtx
                 >>= loadAndApplyTemplate "templates/default.html" postCtx
                 >>= relativizeUrls

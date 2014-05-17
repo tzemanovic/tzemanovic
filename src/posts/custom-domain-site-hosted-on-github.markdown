@@ -12,7 +12,8 @@ To redirect the github page to your custom domain create a **CNAME** file in the
 
 It is handy to create a *one-click* publish shell script. Here is mine:
 
-<pre><code class="bash">#!/bin/bash
+```bash
+#!/bin/bash
 
 # Create _publish directory if it doesn't exits
 mkdir -p _publish
@@ -42,8 +43,7 @@ mv .README.md README.md
 cp -rf ../../_site/* .
 
 # Add all files to git
-git add --all .
-git add -u :/
+git add -A
 
 echo -n "enter commit message: "
 read msg
@@ -53,4 +53,4 @@ git commit -m "$msg"
 # git config --global core.askpass "git-gui--askpass"
 
 git push origin master
-</code></pre>
+```

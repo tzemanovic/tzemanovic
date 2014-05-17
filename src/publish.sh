@@ -28,8 +28,7 @@ mv .README.md README.md
 cp -rf ../../_site/* .
 
 # Add all files to git
-git add --all .
-git add -u :/
+git add -A
 
 echo -n "enter commit message: "
 read msg
@@ -42,7 +41,6 @@ git push origin master
 
 # Publish the source code too
 cd ../..
-git add --all .
-git add -u :/
+git add -A
 git commit -m "$msg"
 git push origin master
