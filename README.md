@@ -6,10 +6,12 @@ source code for [maseek.codes](http://maseek.codes)
 ## dependencies
 
    * [hakyll](http://jaspervdj.be/hakyll/)
-     `cabal install hakyll`
 
 ## building
 
-`ghc --make -threaded -O2 site.hs`
+```
+stack install
+stack build
+stack exec site build
+```
 
-`./site rebuild`

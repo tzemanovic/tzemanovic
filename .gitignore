@@ -2,6 +2,7 @@
 src/_cache/
 src/_site/
 src/_publish/
+src/.stack-work/
 assets/
 bootstrap-less/node_modules/
 bootstrap-less/dist/

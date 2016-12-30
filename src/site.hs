@@ -1,15 +1,19 @@
 -- some parts inspired by <https://github.com/yogsototh/yblog>
 --------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
-import Data.Monoid ((<>))
-import System.FilePath.Posix (takeBaseName,takeDirectory,(</>),splitFileName)
-import Data.List (sortBy, isInfixOf, isPrefixOf, isSuffixOf)
-import Data.Ord (comparing)
-import System.FilePath (takeFileName)
-import GHC.IO.Encoding(setLocaleEncoding, setFileSystemEncoding, setForeignEncoding, utf8)
-import Control.Monad (forM)
-import System.Locale (defaultTimeLocale)
-import Hakyll
+import           Control.Monad         (forM)
+import           Data.List             (isInfixOf, isPrefixOf, isSuffixOf,
+                                        sortBy)
+import           Data.Monoid           ((<>))
+import           Data.Ord              (comparing)
+import           Data.Time.Format      (defaultTimeLocale)
+import           GHC.IO.Encoding       (setFileSystemEncoding,
+                                        setForeignEncoding, setLocaleEncoding,
+                                        utf8)
+import           Hakyll
+import           System.FilePath       (takeFileName)
+import           System.FilePath.Posix (splitFileName, takeBaseName,
+                                        takeDirectory, (</>))
 
 --------------------------------------------------------------------------------
 main :: IO ()
@@ -47,7 +51,7 @@ main = do
                 loadAllSnapshots "posts/*" "post"
                 >>= (fmap (take 10)) . createdFirst
                 >>= renderAtom feedConfiguration feedCtx
-                
+
         create ["archive.html"] $ do
             route idRoute
             compile $ do
@@ -134,7 +138,7 @@ metaKeywordCtx = field "metaKeywords" $ \item -> do
 
 --------------------------------------------------------------------------------
 feedCtx :: Context String
-feedCtx = defaultContext <> bodyField "description" 
+feedCtx = defaultContext <> bodyField "description"
 
 --------------------------------------------------------------------------------
 feedConfiguration :: FeedConfiguration
@@ -167,7 +171,7 @@ removeIndexHtml item = return $ fmap (withUrls removeIndexStr) item
 --------------------------------------------------------------------------------
 config :: Configuration
 config = defaultConfiguration {ignoreFile = ignoreFile'}
-    where 
+    where
         ignoreFile' path
             | "."    `isPrefixOf` fileName = True
             | "#"    `isPrefixOf` fileName = True
@@ -186,6 +190,3 @@ createdFirst items = do
         return (utc,item)
     return $ map snd $ reverse $ sortBy (comparing fst) itemsWithTime
 
---------------------------------------------------------------------------------
-pandocCompile :: Item String -> Compiler (Item String)
-pandocCompile item = return $ writePandoc $ readPandoc item
