@@ -6,7 +6,7 @@ cd _publish
 
 # Clone the giuthub page repo or pull the latest version
 if [ ! -d "maseek.github.io" ]; then
-    git clone https://github.com/maseek/maseek.github.io.git
+    git clone https://github.com/tzemanovic/maseek.github.io.git
 else
     git pull origin master
 fi
