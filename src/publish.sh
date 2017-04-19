@@ -5,23 +5,21 @@ mkdir -p _publish
 cd _publish
 
 # Clone the giuthub page repo or pull the latest version
-if [ ! -d "maseek.github.io" ]; then
-    git clone https://github.com/tzemanovic/maseek.github.io.git
+if [ ! -d "tzemanovic.github.io" ]; then
+    git clone https://github.com/tzemanovic/tzemanovic.github.io.git
 else
     git pull origin master
 fi
 
-cd maseek.github.io
+cd tzemanovic.github.io
 
 # Prepend the file names you want to keep in here with dot
-mv CNAME .CNAME
 mv README.md .README.md
 
 # Clean up
 rm -rf *
 
 # Undo the name changes
-mv .CNAME CNAME
 mv .README.md README.md
 
 # Hakyll by default generates site into _site directory
