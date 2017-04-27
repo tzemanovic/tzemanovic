@@ -1,7 +1,7 @@
-maseek-codes
+tzemanovic.github.io
 =============
 
-source code for [maseek.codes](http://maseek.codes)
+source code for [tzemanovic.github.io](http://tzemanovic.github.io)
 
 ## dependencies
 
