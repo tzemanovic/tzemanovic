@@ -127,6 +127,24 @@ main = do
                     >>= relativizeUrls
                     >>= removeIndexHtml
 
+        match "l11staging.html" $ do
+            route idRoute
+            compile $ do
+                getResourceBody
+                    >>= applyAsTemplate defaultContext
+                    >>= loadAndApplyTemplate "templates/default.html" defaultContext
+                    >>= relativizeUrls
+                    >>= removeIndexHtml
+
+        match "l11production.html" $ do
+            route idRoute
+            compile $ do
+                getResourceBody
+                    >>= applyAsTemplate defaultContext
+                    >>= loadAndApplyTemplate "templates/default.html" defaultContext
+                    >>= relativizeUrls
+                    >>= removeIndexHtml
+
         match "templates/*" $ compile templateCompiler
 
 --------------------------------------------------------------------------------
