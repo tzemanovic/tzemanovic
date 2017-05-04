@@ -118,25 +118,7 @@ main = do
                     >>= relativizeUrls
                     >>= removeIndexHtml
 
-        match "l11usertest.html" $ do
-            route idRoute
-            compile $ do
-                getResourceBody
-                    >>= applyAsTemplate defaultContext
-                    >>= loadAndApplyTemplate "templates/default.html" defaultContext
-                    >>= relativizeUrls
-                    >>= removeIndexHtml
-
-        match "l11staging.html" $ do
-            route idRoute
-            compile $ do
-                getResourceBody
-                    >>= applyAsTemplate defaultContext
-                    >>= loadAndApplyTemplate "templates/default.html" defaultContext
-                    >>= relativizeUrls
-                    >>= removeIndexHtml
-
-        match "l11production.html" $ do
+        match "l11*.html" $ do
             route idRoute
             compile $ do
                 getResourceBody
