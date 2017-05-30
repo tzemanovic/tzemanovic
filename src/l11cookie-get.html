@@ -1,0 +1,13 @@
+cookie get
+
+<script type="text/javascript">
+    var callback = function(event) {
+        console.log('event', event);
+        console.log('data', event.data);
+    };
+    window.addEventListener('message', window, callback);
+    var elem = document.createElement('iframe');
+    elem.src = 'http://localhost:8000/usertest/get-cookie';
+    elem.style.display = 'none';
+    document.body.appendChild(elem);
+</script>
