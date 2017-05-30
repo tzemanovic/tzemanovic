@@ -5,7 +5,7 @@ cookie get
         console.log('event', event);
         console.log('data', event.data);
     };
-    window.addEventListener('message', window, callback);
+    window.addEventListener('message', callback, false);
     var elem = document.createElement('iframe');
     elem.src = 'http://localhost:8000/usertest/get-cookie';
     elem.style.display = 'none';
