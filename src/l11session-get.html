@@ -1,4 +1,4 @@
-cookie get
+get session - check console
 
 <script type="text/javascript">
     var callback = function(event) {
@@ -7,7 +7,7 @@ cookie get
     };
     window.addEventListener('message', callback, false);
     var elem = document.createElement('iframe');
-    elem.src = 'http://localhost:8000/usertest/get-cookie';
+    elem.src = '//localhost:8000/usertest/get-session';
     elem.style.display = 'none';
     document.body.appendChild(elem);
 </script>
