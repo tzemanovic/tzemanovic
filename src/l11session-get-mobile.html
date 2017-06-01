@@ -1,0 +1,17 @@
+get session - check console
+
+<script type="text/javascript">
+    var callback = function(event) {
+        var data = JSON.parse(event.data);
+        if (data.fromLoop11) {
+            var text = document.createElement('span');
+            text.innerText = data.session;
+            document.body.appendChild(text);
+        }
+    };
+    window.addEventListener('message', callback, false);
+    var elem = document.createElement('iframe');
+    elem.src = '//taebles.local:8000/usertest/get-session';
+    elem.style.display = 'none';
+    document.body.appendChild(elem);
+</script>
