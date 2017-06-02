@@ -2,7 +2,7 @@ get session - check console
 
 <script type="text/javascript">
     var callback = function(event) {
-        var data = JSON.parse(event.data);
+        var data = JSON.parse(unescape(event.data));
         if (data.fromLoop11) {
             var text = document.createElement('span');
             text.innerText = data.session;
