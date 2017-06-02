@@ -1,0 +1,12 @@
+<!-- the session string is = escape(JSON.stringify({test:"ac803909cb4b37be1e71b3f293f88396f7e96118"}) -->
+<!-- <img src="//localhost:8000/usertest/set-session/%7B%22test%22%3A%22ac803909cb4b37be1e71b3f293f88396f7e96118%22%7D" style="display:none;" /> -->
+
+set session
+
+<script type="text/javascript">
+ var elem = document.createElement('iframe');
+ var time = (new Date()).getTime();
+ elem.src = '//staging.loop11.com/usertest/set-safari-session-1/%7B%22test%22%3A%22ac803909cb4b37be1e71b3f293f88396f7e96118%22%7D?t=' + time;
+ elem.style.display = 'none';
+ document.body.appendChild(elem);
+</script>
