@@ -30,7 +30,7 @@ git add --all :/
 git add -u :/
 
 echo -n "enter commit message: "
-read msg
+read -e msg
 git commit -m "$msg"
 
 # If you are using cygwin, git push command will get stuck, so use the following command first to cofigure git to ask for password in a popup window
