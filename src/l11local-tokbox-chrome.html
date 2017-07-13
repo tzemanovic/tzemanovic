@@ -68,7 +68,7 @@
        var screenContainerElement = document.createElement('div');
        var screenSharingPublisher = OT.initPublisher(
          screenContainerElement,
-         { videoSource : 'screen' },
+         { videoSource : 'screen', audioSource : 'audio' },
          function(error) {
            if (error) {
              alert('Something went wrong: ' + error.message);
