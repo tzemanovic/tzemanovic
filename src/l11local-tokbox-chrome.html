@@ -26,7 +26,8 @@
             return;
         }
         // publish a stream using the camera and microphone:
-        var audioContainerElement = document.createElement('div');
+
+        /*var audioContainerElement = document.createElement('div');
         var publisher = OT.initPublisher(
             audioContainerElement, {
                 audioSource: 'default'
@@ -43,9 +44,15 @@
                             }
                         });
                 }
-            });
-        /* var publisher = OT.initPublisher('camera-publisher');*/
-        /* session.publish(publisher);*/
+            });*/
+
+        var publisher = OT.initPublisher('camera-publisher', {
+            properties: {
+                publishVideo: false,
+                widthxheight: "1280x720"
+            }
+        });
+        session.publish(publisher);
         /* document.getElementById('shareBtn').disabled = false;*/
     });
 
