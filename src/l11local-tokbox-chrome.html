@@ -46,12 +46,14 @@
                 }
             });*/
 
-        var publisher = OT.initPublisher('camera-publisher', {
+        /*var publisher = OT.initPublisher('camera-publisher', {
             properties: {
                 publishVideo: false,
                 widthxheight: "1280x720"
             }
-        });
+        });*/
+
+        var publisher = OT.initPublisher('camera-publisher');
         session.publish(publisher);
         /* document.getElementById('shareBtn').disabled = false;*/
     });
