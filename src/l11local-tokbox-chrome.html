@@ -58,7 +58,7 @@
     /* document.getElementById('shareBtn').disabled = false;*/
     /*});*/
 
-    session.on('streamCreated', function(event) {
+    /*session.on('streamCreated', function(event) {
         console.log('streamCreated', event);
         if (event.stream.videoType === 'screen') {
             // This is a screen-sharing stream published by another client
@@ -77,7 +77,7 @@
             };
             session.subscribe(event.stream, 'camera-subscriber', subOptions);
         }
-    });
+    });*/
 
     // For Google Chrome only, register your extension by ID,
     // You can find it at chrome://extensions once the extension is installed
@@ -111,6 +111,7 @@
                         if (error) {
                             alert('Something went wrong: ' + error.message);
                         } else {
+                            console.log('screenSharingPublisher', screenSharingPublisher);
                             session.publish(
                                 screenSharingPublisher,
                                 function(error) {
@@ -130,14 +131,15 @@
                     var audioPublisher = OT.initPublisher(
                         audioContainerElement, {
                             videoSource: false
-                          /* publishVideo: false,*/
-                          /* audioSource: 'audio',*/
-                          /* publishAudio: true*/
+                            /* publishVideo: false,*/
+                            /* audioSource: 'audio',*/
+                            /* publishAudio: true*/
                         },
                         function(error) {
                             if (error) {
                                 alert('Something went wrong: ' + error.message);
                             } else {
+                                console.log('audioPublisher', audioPublisher);
                                 session.publish(
                                     audioPublisher,
                                     function(error) {
