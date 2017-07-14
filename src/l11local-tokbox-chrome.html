@@ -129,10 +129,10 @@
                     var audioContainerElement = document.createElement('div');
                     var audioPublisher = OT.initPublisher(
                         audioContainerElement, {
-                            videoSource: false,
-                            publishVideo: false,
-                            audioSource: 'audio',
-                            publishAudio: true
+                            videoSource: false
+                          /* publishVideo: false,*/
+                          /* audioSource: 'audio',*/
+                          /* publishAudio: true*/
                         },
                         function(error) {
                             if (error) {
