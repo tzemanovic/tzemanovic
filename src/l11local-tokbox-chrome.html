@@ -101,7 +101,8 @@
                 var screenSharingPublisher = OT.initPublisher(
                     screenContainerElement, {
                         videoSource: 'screen',
-                        widthxheight: "1280x720"
+                        widthxheight: "1280x720",
+                        publishAudio: false
                     },
                     function(error) {
                         if (error) {
