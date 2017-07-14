@@ -53,8 +53,8 @@
             }
         });*/
 
-      /* var publisher = OT.initPublisher('camera-publisher');*/
-      /* session.publish(publisher);*/
+        /* var publisher = OT.initPublisher('camera-publisher');*/
+        /* session.publish(publisher);*/
         /* document.getElementById('shareBtn').disabled = false;*/
     });
 
@@ -103,7 +103,7 @@
                     screenContainerElement, {
                         videoSource: 'screen',
                         publishVideo: false,
-                        widthxheight: "1280x720",
+                        widthxheight: '1280x720',
                         audioSource: false,
                         publishAudio: false
                     },
@@ -121,27 +121,33 @@
                         }
                     });
 
-                var audioContainerElement = document.createElement('div');
-                var audioPublisher = OT.initPublisher(
-                    audioContainerElement, {
-                        videoSource: false,
-                        publishVideo: false,
-                        audioSource: true,
-                        publishAudio: true
-                    },
-                    function(error) {
-                        if (error) {
-                            alert('Something went wrong: ' + error.message);
-                        } else {
-                            session.publish(
-                                audioPublisher,
-                                function(error) {
-                                    if (error) {
-                                        alert('Something went wrong: ' + error.message);
-                                    }
-                                });
-                        }
-                    });
+                session.connect(token, function(error) {
+                    if (error) {
+                        alert('Error connecting to session: ' + error.message);
+                        return;
+                    }
+                    var audioContainerElement = document.createElement('div');
+                    var audioPublisher = OT.initPublisher(
+                        audioContainerElement, {
+                            videoSource: false,
+                            publishVideo: false,
+                            audioSource: 'audio',
+                            publishAudio: true
+                        },
+                        function(error) {
+                            if (error) {
+                                alert('Something went wrong: ' + error.message);
+                            } else {
+                                session.publish(
+                                    audioPublisher,
+                                    function(error) {
+                                        if (error) {
+                                            alert('Something went wrong: ' + error.message);
+                                        }
+                                    });
+                            }
+                        });
+                });
             }
         });
     }
