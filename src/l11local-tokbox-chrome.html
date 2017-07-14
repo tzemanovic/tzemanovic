@@ -20,43 +20,43 @@
 
     var session = OT.initSession(apiKey, sessionId);
 
-    session.connect(token, function(error) {
+    /*session.connect(token, function(error) {
         if (error) {
             alert('Error connecting to session: ' + error.message);
             return;
-        }
-        // publish a stream using the camera and microphone:
+        }*/
+    // publish a stream using the camera and microphone:
 
-        /*var audioContainerElement = document.createElement('div');
-        var publisher = OT.initPublisher(
-            audioContainerElement, {
-                audioSource: 'default'
-            },
-            function(error) {
-                if (error) {
-                    alert('Something went wrong: ' + error.message);
-                } else {
-                    session.publish(
-                        publisher,
-                        function(error) {
-                            if (error) {
-                                alert('Something went wrong: ' + error.message);
-                            }
-                        });
-                }
-            });*/
-
-        /*var publisher = OT.initPublisher('camera-publisher', {
-            properties: {
-                publishVideo: false,
-                widthxheight: "1280x720"
+    /*var audioContainerElement = document.createElement('div');
+    var publisher = OT.initPublisher(
+        audioContainerElement, {
+            audioSource: 'default'
+        },
+        function(error) {
+            if (error) {
+                alert('Something went wrong: ' + error.message);
+            } else {
+                session.publish(
+                    publisher,
+                    function(error) {
+                        if (error) {
+                            alert('Something went wrong: ' + error.message);
+                        }
+                    });
             }
         });*/
 
-        /* var publisher = OT.initPublisher('camera-publisher');*/
-        /* session.publish(publisher);*/
-        /* document.getElementById('shareBtn').disabled = false;*/
-    });
+    /*var publisher = OT.initPublisher('camera-publisher', {
+        properties: {
+            publishVideo: false,
+            widthxheight: "1280x720"
+        }
+    });*/
+
+    /* var publisher = OT.initPublisher('camera-publisher');*/
+    /* session.publish(publisher);*/
+    /* document.getElementById('shareBtn').disabled = false;*/
+    /*});*/
 
     session.on('streamCreated', function(event) {
         console.log('streamCreated', event);
