@@ -53,12 +53,13 @@
             }
         });*/
 
-        var publisher = OT.initPublisher('camera-publisher');
-        session.publish(publisher);
+      /* var publisher = OT.initPublisher('camera-publisher');*/
+      /* session.publish(publisher);*/
         /* document.getElementById('shareBtn').disabled = false;*/
     });
 
     session.on('streamCreated', function(event) {
+        console.log('streamCreated', event);
         if (event.stream.videoType === 'screen') {
             // This is a screen-sharing stream published by another client
             var subOptions = {
@@ -101,6 +102,7 @@
                 var screenSharingPublisher = OT.initPublisher(
                     screenContainerElement, {
                         videoSource: 'screen',
+                        publishVideo: false,
                         widthxheight: "1280x720",
                         audioSource: false,
                         publishAudio: false
@@ -111,6 +113,28 @@
                         } else {
                             session.publish(
                                 screenSharingPublisher,
+                                function(error) {
+                                    if (error) {
+                                        alert('Something went wrong: ' + error.message);
+                                    }
+                                });
+                        }
+                    });
+
+                var audioContainerElement = document.createElement('div');
+                var audioPublisher = OT.initPublisher(
+                    audioContainerElement, {
+                        videoSource: false,
+                        publishVideo: false,
+                        audioSource: true,
+                        publishAudio: true
+                    },
+                    function(error) {
+                        if (error) {
+                            alert('Something went wrong: ' + error.message);
+                        } else {
+                            session.publish(
+                                audioPublisher,
                                 function(error) {
                                     if (error) {
                                         alert('Something went wrong: ' + error.message);
