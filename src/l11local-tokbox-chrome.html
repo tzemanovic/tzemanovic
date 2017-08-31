@@ -4,8 +4,8 @@
  // Go to https://dashboard.tokbox.com/ to get your OpenTok API Key and to generate
  // a test session ID and token:
  var apiKey = '45942772',
-     sessionId = '2_MX40NTk0Mjc3Mn5-MTUwNDE0MjQ0MTgzNn5PNzZteUZSZXR4SDMrRUtnd040SUdYUVZ-fg',
-     token = 'T1==cGFydG5lcl9pZD00NTk0Mjc3MiZzaWc9NjFlYmRiN2Q3OTIwOGExYjUwOWM5NzRmYTUwMDdjNWM0NzcxMTNjYjpzZXNzaW9uX2lkPTJfTVg0ME5UazBNamMzTW41LU1UVXdOREUwTWpRME1UZ3pObjVQTnpadGVVWlNaWFI0U0RNclJVdG5kMDQwU1VkWVVWWi1mZyZjcmVhdGVfdGltZT0xNTA0MTQyNDc3Jm5vbmNlPTAuMTgxNDYyMjU3OTc0NDE1ODQmcm9sZT1wdWJsaXNoZXImZXhwaXJlX3RpbWU9MTUwNDE0NjA3NiZpbml0aWFsX2xheW91dF9jbGFzc19saXN0PQ==';
+     sessionId = '2_MX40NTk0Mjc3Mn5-MTUwNDE0MzAyOTMxN35SUzF6aDlwVFlJSGdGKzZyODVUTFp1TmN-fg',
+     token = 'T1==cGFydG5lcl9pZD00NTk0Mjc3MiZzaWc9NDgyNjBmNDk3YmRlMDAyYWNhZjhiMTY4MWVlNGViN2FiYjU5MjBmMjpzZXNzaW9uX2lkPTJfTVg0ME5UazBNamMzTW41LU1UVXdOREUwTXpBeU9UTXhOMzVTVXpGNmFEbHdWRmxKU0dkR0t6WnlPRFZVVEZwMVRtTi1mZyZjcmVhdGVfdGltZT0xNTA0MTQzMTAzJm5vbmNlPTAuMjA4MzQzMjkxNDkxNzM4NyZyb2xlPXB1Ymxpc2hlciZleHBpcmVfdGltZT0xNTA0MTQ2NzAyJmluaXRpYWxfbGF5b3V0X2NsYXNzX2xpc3Q9';
 
  // Replace this with the ID for your Chrome screen-sharing extension, which you can
  // get at chrome://extensions/:
@@ -109,6 +109,7 @@
              videoSource: 'screen',
              publishVideo: true,
              /* resolution: '1280x720', not applicable for screen-sharing https://tokbox.com/developer/guides/screen-sharing/js/#maximum-resolution */
+             maxResolution: { width: 1280, height: 720 }, // max value is 1920 for each, min is 10
              frameRate: 15,
              audioSource: false,
              publishAudio: false
