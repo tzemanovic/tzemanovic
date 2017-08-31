@@ -3,9 +3,9 @@
 <script type="text/javascript">
  // Go to https://dashboard.tokbox.com/ to get your OpenTok API Key and to generate
  // a test session ID and token:
- var apiKey = '45913722',
-     sessionId = '2_MX40NTkxMzcyMn5-MTQ5OTkyMjQ4Mzg3MX5weEVreUEzcUl0R2FicTg0UHBBRkdXTEd-fg',
-     token = 'T1==cGFydG5lcl9pZD00NTkxMzcyMiZzaWc9YjQ1NDhiYWVjMzY3MjJlMDkxOGExZDAyOTMwODUwZWQ1NjhlYTRiYTpzZXNzaW9uX2lkPTJfTVg0ME5Ua3hNemN5TW41LU1UUTVPVGt5TWpRNE16ZzNNWDV3ZUVWcmVVRXpjVWwwUjJGaWNUZzBVSEJCUmtkWFRFZC1mZyZjcmVhdGVfdGltZT0xNDk5OTIyNTEyJm5vbmNlPTAuNjAxODAzMzYyNjg3NTcxNCZyb2xlPXB1Ymxpc2hlciZleHBpcmVfdGltZT0xNTAyNTE0NTExJmluaXRpYWxfbGF5b3V0X2NsYXNzX2xpc3Q9';
+ var apiKey = '45942772',
+     sessionId = '1_MX40NTk0Mjc3Mn5-MTUwNDEzOTk0MTQ2MX5RbjNmTUo2K2xCUmlZdjJuVlZENWpCbzR-fg',
+     token = 'T1==cGFydG5lcl9pZD00NTk0Mjc3MiZzaWc9ZGI2OGVjNjNkODhlNGU1NDA0ZDE1ZDQxOWE4OGViYjE5MWY0OTcwZjpzZXNzaW9uX2lkPTFfTVg0ME5UazBNamMzTW41LU1UVXdOREV6T1RrME1UUTJNWDVSYmpObVRVbzJLMnhDVW1sWmRqSnVWbFpFTldwQ2J6Ui1mZyZjcmVhdGVfdGltZT0xNTA0MTQwNzU4Jm5vbmNlPTAuMjU2MjE1NjkwOTc5MzExNiZyb2xlPXB1Ymxpc2hlciZleHBpcmVfdGltZT0xNTA0MTQ0MzU5JmluaXRpYWxfbGF5b3V0X2NsYXNzX2xpc3Q9';
 
  // Replace this with the ID for your Chrome screen-sharing extension, which you can
  // get at chrome://extensions/:
@@ -84,65 +84,42 @@
  OT.registerScreenSharingExtension('chrome', extensionId, 2);
 
  function screenshare() {
-   OT.checkScreenSharingCapability(function(response) {
-     console.info(response);
-     if (!response.supported || response.extensionRegistered === false) {
-       alert('This browser does not support screen sharing.');
-     } else if (response.extensionInstalled === false &&
-                (response.extensionRequired || !ffWhitelistVersion)) {
-       alert('Please install the screen-sharing extension and load this page over HTTPS.');
-     } else if (ffWhitelistVersion && navigator.userAgent.match(/Firefox/) &&
-                navigator.userAgent.match(/Firefox\/(\d+)/)[1] < ffWhitelistVersion) {
-       alert('For screen sharing, please update your version of Firefox to ' +
-             ffWhitelistVersion + '.');
-     } else {
-       // Screen sharing is available. Publish the screen.
-       // Create an element, but do not display it in the HTML DOM:
-       var screenContainerElement = document.createElement('div');
-       var screenSharingPublisher = OT.initPublisher(
-         screenContainerElement, {
-           videoSource: 'screen',
-           publishVideo: true,
-           /* resolution: '1280x720', not applicable for screen-sharing https://tokbox.com/developer/guides/screen-sharing/js/#maximum-resolution */
-           frameRate: 15,
-           audioSource: false,
-           publishAudio: false
-         },
-         function(error) {
-           if (error) {
-             alert('Something went wrong: ' + error.message);
-           } else {
-             console.log('screenSharingPublisher', screenSharingPublisher);
-             session.publish(
-               screenSharingPublisher,
-               function(error) {
-                 if (error) {
-                   alert('Something went wrong: ' + error.message);
-                 }
-               });
-           }
-         });
-
-       session.connect(token, function(error) {
-         if (error) {
-           alert('Error connecting to session: ' + error.message);
-           return;
-         }
-         var audioContainerElement = document.createElement('div');
-         var audioPublisher = OT.initPublisher(
-           audioContainerElement, {
-             videoSource: false
-             /* publishVideo: false,*/
-             /* audioSource: 'audio',*/
-             /* publishAudio: true*/
+   session.connect(token, function(error) {
+     if (error) {
+       alert('Error connecting to session: ' + error.message);
+       return;
+     }
+     OT.checkScreenSharingCapability(function(response) {
+       console.info(response);
+       if (!response.supported || response.extensionRegistered === false) {
+         alert('This browser does not support screen sharing.');
+       } else if (response.extensionInstalled === false &&
+                  (response.extensionRequired || !ffWhitelistVersion)) {
+         alert('Please install the screen-sharing extension and load this page over HTTPS.');
+       } else if (ffWhitelistVersion && navigator.userAgent.match(/Firefox/) &&
+                  navigator.userAgent.match(/Firefox\/(\d+)/)[1] < ffWhitelistVersion) {
+         alert('For screen sharing, please update your version of Firefox to ' +
+               ffWhitelistVersion + '.');
+       } else {
+         // Screen sharing is available. Publish the screen.
+         // Create an element, but do not display it in the HTML DOM:
+         var screenContainerElement = document.createElement('div');
+         var screenSharingPublisher = OT.initPublisher(
+           screenContainerElement, {
+             videoSource: 'screen',
+             publishVideo: true,
+             /* resolution: '1280x720', not applicable for screen-sharing https://tokbox.com/developer/guides/screen-sharing/js/#maximum-resolution */
+             frameRate: 15,
+             audioSource: false,
+             publishAudio: false
            },
            function(error) {
              if (error) {
                alert('Something went wrong: ' + error.message);
              } else {
-               console.log('audioPublisher', audioPublisher);
+               console.log('screenSharingPublisher', screenSharingPublisher);
                session.publish(
-                 audioPublisher,
+                 screenSharingPublisher,
                  function(error) {
                    if (error) {
                      alert('Something went wrong: ' + error.message);
@@ -150,10 +127,38 @@
                  });
              }
            });
-       });
-     }
+
+         //recordAudio();
+       }
+     });
    });
  }
 
  screenshare();
+
+ function recordAudio() {
+
+   var audioContainerElement = document.createElement('div');
+   var audioPublisher = OT.initPublisher(
+     audioContainerElement, {
+       videoSource: false
+       /* publishVideo: false,*/
+       /* audioSource: 'audio',*/
+       /* publishAudio: true*/
+     },
+     function(error) {
+       if (error) {
+         alert('Something went wrong: ' + error.message);
+       } else {
+         console.log('audioPublisher', audioPublisher);
+         session.publish(
+           audioPublisher,
+           function(error) {
+             if (error) {
+               alert('Something went wrong: ' + error.message);
+             }
+           });
+       }
+     });
+ }
 </script>
