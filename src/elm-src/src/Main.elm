@@ -1,22 +1,26 @@
-module Main exposing (..)
+module Main exposing (main)
 
-import Page exposing (Page(..))
+import Element
+import Element.Events exposing (onClick)
 import Navigation exposing (Location)
 import Html exposing (Html, button, div, img, text)
-import Html.Attributes exposing (src)
-import Html.Events exposing (onClick)
+import TZ.Page.Blog as Blog
+import TZ.Page.Resume as Resume
+import TZ.Page.Stacks as Stacks
+import TZ.Route as Route exposing (Route(..))
+import TZ.Style exposing (Style(..), stylesheet)
 
 
 ---- MODEL ----
 
 
 type alias Model =
-    { page : Page }
+    { route : Route }
 
 
 init : Location -> ( Model, Cmd Msg )
 init location =
-    ( { page = Page.fromLocation location }, Cmd.none )
+    ( { route = Route.fromLocation location }, Cmd.none )
 
 
 
@@ -26,7 +30,7 @@ init location =
 type Msg
     = NoOp
     | LocationChanged Location
-    | ChangePage Page
+    | ChangeRoute Route
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -40,13 +44,13 @@ update msg model =
                 _ =
                     Debug.log "location" <| toString location
 
-                page =
-                    Page.fromLocation location
+                route =
+                    Route.fromLocation location
             in
-                ( { model | page = page }, Cmd.none )
+                ( { model | route = route }, Cmd.none )
 
-        ChangePage page ->
-            ( model, Page.change page )
+        ChangeRoute route ->
+            ( model, Route.change route )
 
 
 
@@ -55,12 +59,42 @@ update msg model =
 
 view : Model -> Html Msg
 view model =
-    div []
-        [ img [ src "/logo.svg" ] []
-        , div [] [ text <| toString model.page ]
-        , button [ onClick <| ChangePage Blog ] [ text "Blog" ]
-        , button [ onClick <| ChangePage Resume ] [ text "Résumé" ]
-        , button [ onClick <| ChangePage Stacks ] [ text "Stacks" ]
+    Element.viewport stylesheet <|
+        Element.column None
+            []
+            [ navigation
+            , Element.text "view"
+            , case model.route of
+                Blog ->
+                    Blog.view
+
+                Resume ->
+                    Resume.view
+
+                Stacks ->
+                    Stacks.view
+
+                _ ->
+                    Element.empty
+            ]
+
+
+navigation =
+    Element.row None
+        []
+        [ Element.el None [] (Element.text "TZ")
+        , Element.row None
+            []
+            [ Element.el None
+                [ onClick <| ChangeRoute Blog ]
+                (Element.text "Blog")
+            , Element.el None
+                [ onClick <| ChangeRoute Resume ]
+                (Element.text "R")
+            , Element.el None
+                [ onClick <| ChangeRoute Stacks ]
+                (Element.text "Stacks")
+            ]
         ]
 
 

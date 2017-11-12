@@ -1,6 +1,6 @@
-module Page
+module TZ.Route
     exposing
-        ( Page(..)
+        ( Route(..)
         , initial
         , fromLocation
         , change
@@ -10,31 +10,31 @@ import UrlParser exposing (map, oneOf, parsePath, s, top)
 import Navigation exposing (Location)
 
 
-type Page
+type Route
     = NotFound
     | Blog
     | Resume
     | Stacks
 
 
-initial : Page
+initial : Route
 initial =
     Blog
 
 
-fromLocation : Location -> Page
+fromLocation : Location -> Route
 fromLocation location =
     Maybe.withDefault NotFound <|
         parsePath pathParser location
 
 
-change : Page -> Cmd msg
+change : Route -> Cmd msg
 change =
-    pageToPath >> Navigation.newUrl
+    routeToPath >> Navigation.newUrl
 
 
 
--- INTERNAL --
+---- INTERNAL ----
 
 
 blog : String
@@ -52,7 +52,7 @@ resume =
     "resume"
 
 
-pathParser : UrlParser.Parser (Page -> c) c
+pathParser : UrlParser.Parser (Route -> c) c
 pathParser =
     oneOf
         [ map initial top
@@ -62,10 +62,10 @@ pathParser =
         ]
 
 
-pageToPath : Page -> String
-pageToPath page =
+routeToPath : Route -> String
+routeToPath route =
     "/"
-        ++ case page of
+        ++ case route of
             NotFound ->
                 ""
 
