@@ -13,3 +13,6 @@ bootstrap-less/npm-debug.log
 *.o
 *.hi
 *.swp
+backend/.dir-locals.el
+
+.DS_Store

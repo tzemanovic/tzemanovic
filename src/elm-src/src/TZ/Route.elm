@@ -13,7 +13,7 @@ import Navigation exposing (Location)
 type Route
     = NotFound
     | Blog
-    | Resume
+    | Work
     | Stacks
 
 
@@ -57,7 +57,7 @@ pathParser =
     oneOf
         [ map initial top
         , map Blog (s blog)
-        , map Resume (s resume)
+        , map Work (s resume)
         , map Stacks (s stacks)
         ]
 
@@ -72,7 +72,7 @@ routeToPath route =
             Blog ->
                 blog
 
-            Resume ->
+            Work ->
                 resume
 
             Stacks ->

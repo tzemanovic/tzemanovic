@@ -1,0 +1,8 @@
+{
+  "files": {
+    "src/TZ/StaticView.elm": [{
+      "output": "index.html",
+      "viewFunction": "viewBlog"
+    }]
+  }
+}

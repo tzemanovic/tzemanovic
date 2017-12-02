@@ -1,4 +1,4 @@
-module TZ.Page.Resume
+module TZ.Page.Work
     exposing
         ( Model
         , init
