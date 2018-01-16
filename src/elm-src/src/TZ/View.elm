@@ -25,7 +25,6 @@ view model =
             , Element.column
                 None
                 [ Attr.width <| Attr.percent 33.3 ]
-                -- TODO I want the views to be able to access all the columns
                 [ case model.route of
                     Blog ->
                         Blog.view
@@ -47,19 +46,22 @@ view model =
 
 
 navigation =
-    Element.row None
+    Element.row
+        Navigation
         []
-        [ Element.el Logo [] (Element.text "Tomáš Zemanovič")
-        , Element.row None
-            []
-            [ Element.el None
-                [ onClick <| ChangeRoute Blog ]
-                (Element.text "Blog")
-            , Element.el None
-                [ onClick <| ChangeRoute Work ]
-                (Element.text "Work")
-            , Element.el None
-                [ onClick <| ChangeRoute Stacks ]
-                (Element.text "Stacks")
+        [ Element.el Logo [] (Element.text "Tomáš Zemanovič") ]
+        |> Element.below
+            [ Element.column None
+                []
+                [ Element.el None
+                    [ onClick <| ChangeRoute Blog ]
+                    (Element.text "Blog")
+                , Element.el None
+                    [ onClick <| ChangeRoute Work ]
+                    (Element.text "Work")
+                , Element.el None
+                    [ onClick <| ChangeRoute Stacks ]
+                    (Element.text "Stacks")
+                ]
             ]
-        ]
+        |> Element.screen
