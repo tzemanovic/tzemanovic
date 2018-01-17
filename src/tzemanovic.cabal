@@ -1,8 +1,8 @@
-name:                maseek-codes
+name:                tzemanovic
 version:             1.0.0.0
 synopsis:            Blog website
 description:         Please see README.md
-homepage:            https://github.com/githubuser/maseek-codes#readme
+homepage:            https://github.com/tzemanovic/tzemanovic
 license:             GPL-3
 license-file:        LICENSE
 author:              Tomas Zemanovic
@@ -24,4 +24,4 @@ executable site
 
 source-repository head
   type:     git
-  location: https://github.com/githubuser/maseek-codes
+  location: https://github.com/tzemanovic/tzemanovic

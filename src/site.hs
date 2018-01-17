@@ -152,11 +152,11 @@ feedCtx = defaultContext <> bodyField "description"
 --------------------------------------------------------------------------------
 feedConfiguration :: FeedConfiguration
 feedConfiguration = FeedConfiguration
-    { feedTitle = "maseek.codes blog"
+    { feedTitle = "tzemanovic.github.io blog"
     , feedDescription = "blog about c++, haskell and other stuff"
     , feedAuthorName = "Tomas Zemanovic"
     , feedAuthorEmail = "tzemanovic@gmail.com"
-    , feedRoot = "http://maseek.codes"
+    , feedRoot = "https://tzemanovic.github.io"
     }
 
 --------------------------------------------------------------------------------
