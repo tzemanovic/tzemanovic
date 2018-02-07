@@ -1,0 +1,21 @@
+FROM ubuntu:16.04
+MAINTAINER Tomas
+
+RUN apt-get update && \
+  apt-get install -y \
+      curl \
+      libpq-dev
+      # postgresql-server-dev-all \
+
+# install Stack
+RUN curl -sSL https://get.haskellstack.org/ | sh
+
+# install yesod
+RUN stack install yesod-bin --install-ghc --resolver lts-9.14 --local-bin-path /usr/local/bin
+
+# mount
+RUN mkdir -p /tzemanovic
+ADD . /tzemanovic/
+WORKDIR /tzemanovic
+
+RUN stack build

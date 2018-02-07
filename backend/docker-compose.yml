@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+
+  yesod:
+    container_name: tzemanovic_yesod
+    build:
+      context: .
+      dockerfile: docker/Dockerfile_Yesod
+
+    command: /bin/bash ./docker/startup_yesod.sh
+
+    volumes:
+      - .:/tzemanovic
