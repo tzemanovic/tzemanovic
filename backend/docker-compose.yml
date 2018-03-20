@@ -12,3 +12,5 @@ services:
 
     volumes:
       - .:/tzemanovic
+      - ./docker/ssh.cfg:/root/.ssh/config
+      - ~/.ssh/aws-tzemanovic.pem:/root/.ssh/aws-tzemanovic.pem

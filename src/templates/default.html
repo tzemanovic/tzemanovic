@@ -11,24 +11,15 @@
 
     <title>Tomáš Zemanovič :: $title$</title>
 
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700|Playfair+Display+SC:400,700' rel='stylesheet' type='text/css'>
-    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans|Oswald:300" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.min.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-
-
-    <!-- for video recording POC -->
-    <!-- <script src="https://cdn.webrtc-experiment.com/RecordRTC.js"></script> -->
-    <!-- <script src="https://cdn.webrtc-experiment.com/MediaStreamRecorder.js"> </script> -->
-    <!-- for Edge/FF/Chrome/Opera/etc. getUserMedia support -->
-    <!-- <script src="https://cdn.webrtc-experiment.com/gumadapter.js"></script> -->
-    <!-- for S3 upload -->
-    <!-- <script src="https://sdk.amazonaws.com/js/aws-sdk-2.82.0.min.js"></script> -->
 
 </head>
 
@@ -42,7 +33,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-                <a class="navbar-brand" href="/index.html"><img src="/images/logo.png" alt="maseek" /></a>
+            <!-- <a class="navbar-brand" href="/index.html"><img src="/images/logo.png" alt="maseek" /></a> -->
+            <a class="navbar-brand" href="/index.html">
+              <img class="baboon" src="/images/baboon.gif" />
+              <span class="my-name">Tomáš<br/>Zemanovič</span>
+            </a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -59,31 +54,31 @@
         <div class="footer">
             <div class="social-links">
                 <a class="social" href="mailto:&#116;&#122;&#101;&#109;&#97;&#110;&#111;&#118;&#105;&#99;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;" target="_blank">
-                <span class="symbol"><span class="zoom fa-stack fa-lg">
+                <span class="symbol"><span class="zoom fa-stack">
                         <i class="fa fa-square fa-stack-2x"></i>
                         <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
                 </span></span>
             </a>
                 <a class="social" href="https://twitter.com/tzemanovic" target="_blank"><span class="symbol">
-                    <span class="symbol"><span class="zoom fa-stack fa-lg">
+                    <span class="symbol"><span class="zoom fa-stack">
                             <i class="fa fa-square fa-stack-2x"></i>
                             <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
                     </span></span>
             </span></a>
                 <a class="social" href="https://github.com/tzemanovic" target="_blank"><span class="symbol">
-                    <span class="symbol"><span class="zoom fa-stack fa-lg">
+                    <span class="symbol"><span class="zoom fa-stack">
                             <i class="fa fa-square fa-stack-2x"></i>
                             <i class="fa fa-github fa-stack-1x fa-inverse"></i>
                     </span></span>
             </span></a>
                 <a class="social" href="/feed.xml" target="_blank"><span class="symbol">
-                    <span class="symbol"><span class="zoom fa-stack fa-lg">
+                    <span class="symbol"><span class="zoom fa-stack">
                             <i class="fa fa-square fa-stack-2x"></i>
                             <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
                     </span></span>
             </span></a>
                 <a class="social" href="https://au.linkedin.com/in/tomáš-zemanovič-19680740" target="_blank"><span class="symbol">
-                    <span class="symbol"><span class="zoom fa-stack fa-lg">
+                    <span class="symbol"><span class="zoom fa-stack">
                             <i class="fa fa-square fa-stack-2x"></i>
                             <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
                     </span></span>
@@ -91,14 +86,26 @@
 
             </div>
             <div class="about">
-                <p>Tomáš Zemanovič<br/>Glasgow</p>
+              <p>Tomáš Zemanovič<br/>
+                This is page is <a href="https://github.com/tzemanovic/tzemanovic" target="_blank">open source</a>
+              </p>
                 <p>made with <a href="http://jaspervdj.be/hakyll/" target="_blank">Hakyll</a></p>
             </div>
+
+            $if(show-instagram)$
+            <div class="clearfix"></div>
+            <div class="instagram-feed">
+              <h5>Spiders are real, bugs are not</h5><br/>
+
+              <!-- LightWidget WIDGET --><script src="//lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/9b89680de47a5c559d49471291874af4.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
+            </div>
+            $endif$
+
         </div>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <script src="/js/isotope.pkgd.min.js"></script>
     <!-- bashe, c++, haskell -->
     <script src="/js/maseek.min.js"></script>

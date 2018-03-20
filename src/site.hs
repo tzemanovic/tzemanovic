@@ -37,7 +37,7 @@ main = do
                 >>= relativizeUrls
 
         match "posts/*" $ do
-            route $ niceRoute
+            route niceRoute
             compile $ pandocCompiler
                 >>= saveSnapshot "post"
                 >>= loadAndApplyTemplate "templates/post.html"    postCtx
@@ -47,9 +47,9 @@ main = do
 
         create ["feed.xml"] $ do
             route idRoute
-            compile $ do
+            compile $
                 loadAllSnapshots "posts/*" "post"
-                >>= (fmap (take 10)) . createdFirst
+                >>= fmap (take 10) . createdFirst
                 >>= renderAtom feedConfiguration feedCtx
 
         create ["archive.html"] $ do
@@ -58,29 +58,13 @@ main = do
                 posts <- recentFirst =<< loadAll "posts/*"
                 let archiveCtx =
                         listField "posts" postCtx (return posts) <>
-                        constField "title" "archives"            <>
+                        constField "title" "Archives"            <>
                         defaultContext
 
                 makeItem ""
                     >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
                     >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                     >>= relativizeUrls
-
-
-        {-match "index.html" $ do
-            route idRoute
-            compile $ do
-                posts <- recentFirst =<< loadAll "posts/*"
-                let indexCtx =
-                        listField "posts" postCtx (return posts) <>
-                        constField "active-home" "y"             <>
-                        constField "title" "home"                <>
-                        defaultContext
-                getResourceBody
-                    >>= applyAsTemplate indexCtx
-                    >>= loadAndApplyTemplate "templates/default.html" indexCtx
-                    >>= relativizeUrls
-                    >>= removeIndexHtml-}
 
         match "index.html" $ do
             route idRoute
@@ -101,7 +85,7 @@ main = do
             compile $ do
                 let projectsCtx =
                         constField "active-projects" "y"        <>
-                        constField "title" "projects"           <>
+                        constField "title" "Projects"           <>
                         defaultContext
                 getResourceBody
                     >>= applyAsTemplate projectsCtx
@@ -111,7 +95,7 @@ main = do
 
         match "404.html" $ do
             route idRoute
-            compile $ do
+            compile $
                 getResourceBody
                     >>= applyAsTemplate defaultContext
                     >>= loadAndApplyTemplate "templates/default.html" defaultContext
@@ -120,7 +104,7 @@ main = do
 
         match "l11*.html" $ do
             route idRoute
-            compile $ do
+            compile $
                 getResourceBody
                     >>= applyAsTemplate defaultContext
                     >>= loadAndApplyTemplate "templates/default.html" defaultContext
@@ -153,7 +137,7 @@ feedCtx = defaultContext <> bodyField "description"
 feedConfiguration :: FeedConfiguration
 feedConfiguration = FeedConfiguration
     { feedTitle = "tzemanovic.github.io blog"
-    , feedDescription = "blog about c++, haskell and other stuff"
+    , feedDescription = "blog about FP, haskell, elm and other stuff"
     , feedAuthorName = "Tomas Zemanovic"
     , feedAuthorEmail = "tzemanovic@gmail.com"
     , feedRoot = "https://tzemanovic.github.io"
@@ -168,14 +152,16 @@ niceRoute = customRoute createIndexRoute
             where p = toFilePath ident
 
 --------------------------------------------------------------------------------
+  -- "index.html#disqus_thread"
 removeIndexHtml :: Item String -> Compiler (Item String)
 removeIndexHtml item = return $ fmap (withUrls removeIndexStr) item
     where
         removeIndexStr :: String -> String
         removeIndexStr url = case splitFileName url of
             (dir, "index.html") | isLocal dir -> dir
+            (dir, "index.html#disqus_thread") -> dir ++"#disqus_thread"
             _                                 -> url
-            where isLocal uri = not (isInfixOf "://" uri)
+            where isLocal uri = not ("://" `isInfixOf` uri)
 
 --------------------------------------------------------------------------------
 config :: Configuration
@@ -197,5 +183,5 @@ createdFirst items = do
     itemsWithTime <- forM items $ \item -> do
         utc <- getItemUTC defaultTimeLocale $ itemIdentifier item
         return (utc,item)
-    return $ map snd $ reverse $ sortBy (comparing fst) itemsWithTime
+    return $ map snd $ sortBy (flip $ comparing fst) itemsWithTime
 

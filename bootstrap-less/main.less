@@ -20,7 +20,7 @@
 
 html, body {
     min-height: 100%;
-    background-color: #0c3246;
+    background-color: #111c21;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -31,7 +31,6 @@ body {
   padding-bottom: 30px;
 }
 h1, h2, h3, h4, h5, h6 {
-	text-shadow: 1px 1px 0px @gray-dark;
 	color: @brand-primary;
 }
 .footer {
@@ -50,6 +49,20 @@ h1, h2, h3, h4, h5, h6 {
 	line-height: 20px;
 	font-size: 20px;
 }
+
+.container > .navbar-header {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.navigation .navbar-nav > .active > a {
+  color: @brand-navbar;
+}
+
+.navigation .navbar-toggle .icon-bar {
+  background-color: @brand-navbar;
+}
+
 @media (min-width: @screen-sm-min) { 
 	.social-links, .about {
 		text-align: center;
@@ -81,6 +94,8 @@ h1, h2, h3, h4, h5, h6 {
     transform: scale(1,1);
     transition-timing-function: ease-out;
     transition-duration: 500ms;
+    font-size: 0.8em;
+    margin-right: 3px;
 }
 .zoom:hover {
 	text-decoration: none;
@@ -102,8 +117,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar-brand {
-	padding-top: 5px;
-	padding-bottom: 0px;
+  margin-top: 5px;
+	padding: 0px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: @headings-font-family;
+  font-size: 32px;
+  height: 32px;
 }
 .primary-color {
 	color: @brand-primary;
@@ -121,10 +141,10 @@ h1, h2, h3, h4, h5, h6 {
 	margin-bottom: 20px;
 }
 a.red {
-	color: lighten(@brand-navbar, 15%);
+	color: lighten(@brand-primary, 15%);
 }
 a.red:hover {
-	color: @brand-navbar;
+	color: @brand-primary;
 }
 
 pre {
@@ -134,8 +154,26 @@ pre {
 	.img-rounded;
 }
 ::selection {
-	background: #fff;
+	background: #ff53f780;
 	}
 ::-moz-selection {
-	background: #fff;
+	background: #ff53f780;
+}
+
+.baboon {
+  border: 0;
+  width: 94px;
+  border-radius: 94px;
+  margin-top: -29px;
+}
+
+.my-name {
+  display: inline-block;
+  line-height: 22px;
+  font-size: 22px;
+  padding-left: 8px;
+}
+
+a > sup {
+  padding: 0 4px;
 }

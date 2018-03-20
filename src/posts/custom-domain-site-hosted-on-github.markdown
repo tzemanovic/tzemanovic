@@ -1,5 +1,5 @@
 ---
-title: custom domain site hosted on github
+title: Custom domain site hosted on Github
 tags: github, webhost, blog, hakyll, jakyll, free
 published: 2014-05-10
 ---

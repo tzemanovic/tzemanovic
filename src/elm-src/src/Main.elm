@@ -1,4 +1,4 @@
-module Main exposing (main)
+module Main exposing (main, init, update)
 
 import Navigation exposing (Location)
 import TZ.Model exposing (Model, Msg(..))
