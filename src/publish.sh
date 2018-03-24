@@ -39,8 +39,8 @@ git commit -m "$msg"
 git push origin master
 
 # Publish the source code too
-# cd ../..
-# git add --all :/
-# git add -u :/
-# git commit -m "$msg"
-# git push origin master
+cd ../..
+git add --all :/
+git add -u :/
+git commit -m "$msg"
+git push origin master

@@ -18,7 +18,7 @@ stack exec site build
 
 ## develop
 ```
-stack exec site watch
+./devel.sh
 ```
 
 ## publish

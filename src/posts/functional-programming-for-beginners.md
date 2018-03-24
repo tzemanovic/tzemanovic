@@ -39,7 +39,7 @@ Cool, you got me, but...
 ## Where do you start?
 
 <div class="figure">
-  <img src="../../images/elm-grove.jpg" alt="Welcome to Elm" style="width: 100%">
+  <img src="/images/elm-grove.jpg" alt="Welcome to Elm" style="width: 100%">
 </div>
 
 Of course, not everyone learns the same way. As a general recommendation I would say:
