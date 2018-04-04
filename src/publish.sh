@@ -1,5 +1,9 @@
 #!/bin/bash
 
+set -e
+
+stack exec site build
+
 # Create _publish directory if it doesn't exits
 mkdir -p _publish
 cd _publish
