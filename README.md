@@ -1,13 +1,11 @@
 tzemanovic.github.io
 =============
 
-source code for [tzemanovic.github.io](http://tzemanovic.github.io)
+Source code for [tzemanovic.github.io](http://tzemanovic.github.io).
 
-## dependencies
+This page is built with [Hakyll](http://jaspervdj.be/hakyll/) and Bootstrap.
 
-   * [hakyll](http://jaspervdj.be/hakyll/)
-
-## CSS
+## Build Bootstrap
 
 ```
 cd bootstrap-less
@@ -22,7 +20,7 @@ grunt
 cd src
 ```
 
-### build
+### Build
 
 ```
 stack install
@@ -30,12 +28,12 @@ stack build
 stack exec site build
 ```
 
-### develop
+### Develop
 ```
 ./devel.sh
 ```
 
-### publish
+### Publish
 
 ```
 ./publish.sh

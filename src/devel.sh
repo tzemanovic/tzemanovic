@@ -1,3 +1,4 @@
 #!/bin/bash
 
-stack exec site watch
+cd ../bootstrap-less && grunt watch &
+cd ../src && stack exec site watch

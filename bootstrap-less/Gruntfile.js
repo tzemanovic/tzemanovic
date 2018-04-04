@@ -95,6 +95,13 @@ module.exports = function (grunt) {
           'dist/style.css': 'dist/style.css'
         }
       }
+    },
+
+    watch: {
+      scripts: {
+        files: ['**/*.less'],
+        tasks: ['dist']
+      }
     }
   });
 
@@ -119,4 +126,6 @@ module.exports = function (grunt) {
 
   // Default task.
   grunt.registerTask('default', ['test', 'dist']);
+
+  grunt.loadNpmTasks('grunt-contrib-watch');
 };
