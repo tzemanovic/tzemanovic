@@ -1,12 +1,15 @@
 <div class="posts">
     $for(posts)$
     <a class="post-link" href="$url$"><h2>$title$</h2></a><br/>
-    <i class="fa fa-calendar"></i> $date$ <i class="fa fa-comment-o primary-color"></i> <a href="$url$#disqus_thread">Comments</a><br>
+    <i class="fa fa-calendar"></i> $date$ <i class="fa fa-comment-o primary-color"></i> <a href="$url$#disqus_thread" data-disqus-identifier="$url$">Comments</a><br>
     $endfor$
 </div>
 
 <script type="text/javascript">
  var disqus_shortname = 'maseek';
+ var disqus_config = function() {
+   this.page.identifier = '$url$';
+ };
 
  (function () {
    var s = document.createElement('script'); s.async = true;
